@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Предложить заливку серии | Shikimori Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-film"></i>
+                <h1>Shikimori Player</h1>
+            </div>
+            <p class="subtitle">Предложить заливку новой серии</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label for="animeTitle">
+                            <i class="fas fa-tv"></i> Название аниме *
+                        </label>
+                        <input type="text" id="animeTitle" name="animeTitle" required 
+                               placeholder="Например: Kimetsu no Yaiba">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="episodeNumber">
+                            <i class="fas fa-list-ol"></i> Номер серии *
+                        </label>
+                        <input type="number" id="episodeNumber" name="episodeNumber" required 
+                               placeholder="Например: 12" min="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="videoLink">
+                            <i class="fas fa-link"></i> Ссылка на видео *
+                        </label>
+                        <input type="url" id="videoLink" name="videoLink" required 
+                               placeholder="https://example.com/video.mp4">
+                        <small>Поддерживаемые сервисы: YouTube, VK Video, Яндекс.Диск, Google Drive, прямые ссылки</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subtitleLink">
+                            <i class="fas fa-closed-captioning"></i> Ссылка на субтитры (опционально)
+                        </label>
+                        <input type="url" id="subtitleLink" name="subtitleLink" 
+                               placeholder="https://example.com/subs.srt">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quality">
+                            <i class="fas fa-hd"></i> Качество видео *
+                        </label>
+                        <select id="quality" name="quality" required>
+                            <option value="">Выберите качество</option>
+                            <option value="360p">360p</option>
+                            <option value="480p">480p</option>
+                            <option value="720p">720p</option>
+                            <option value="1080p">1080p</option>
+                            <option value="2160p">4K (2160p)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalInfo">
+                            <i class="fas fa-sticky-note"></i> Дополнительная информация
+                        </label>
+                        <textarea id="additionalInfo" name="additionalInfo" rows="4" 
+                                  placeholder="Перевод, студия озвучки, особые примечания..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">
+                            <i class="fas fa-user"></i> Ваш контакт (для обратной связи)
+                        </label>
+                        <input type="text" id="contact" name="contact" required 
+                               placeholder="VK ID, Telegram или email">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="confirm" name="confirm" required>
+                        <label for="confirm">
+                            Я подтверждаю, что имею право на распространение данного контента
+                        </label>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Отправить заявку
+                    </button>
+                </form>
+
+                <div class="instructions">
+                    <h3><i class="fas fa-info-circle"></i> Инструкция:</h3>
+                    <ol>
+                        <li>Заполните все обязательные поля (отмечены *)</li>
+                        <li>Убедитесь, что ссылка на видео доступна</li>
+                        <li>После отправки модератор получит уведомление в VK</li>
+                        <li>Статус заявки будет отправлен вам в ответ</li>
+                        <li>Обычно обработка занимает до 24 часов</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="status-card">
+                <h3><i class="fas fa-history"></i> Статистика заливок</h3>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Обработано за сутки</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3-5</span>
+                        <span class="stat-label">Среднее время (ч)</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Успешных заливок</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Shikimori Player © 2024 | Все заявки обрабатываются вручную</p>
+            <p class="links">
+                <a href="https://vk.com/shikimori" target="_blank"><i class="fab fa-vk"></i> Группа VK</a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub проекта</a>
+                <a href="#" id="rulesLink"><i class="fas fa-scroll"></i> Правила заливки</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="rulesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-scroll"></i> Правила заливки серий</h2>
+            <div class="rules-list">
+                <div class="rule">
+                    <h3><i class="fas fa-ban"></i> Запрещено:</h3>
+                    <ul>
+                        <li>Материалы с нарушением авторских прав</li>
+                        <li>Контент 18+ без соответствующей маркировки</li>
+                        <li>Вирусы, вредоносное ПО</li>
+                        <li>Некачественное видео (размытое, с артефактами)</li>
+                    </ul>
+                </div>
+                <div class="rule">
+                    <h3><i class="fas fa-check-circle"></i> Требования:</h3>
+                    <ul>
+                        <li>Минимальное качество: 720p</li>
+                        <li>Стабильная ссылка на файл (не менее 30 дней)</li>
+                        <li>Отсутствие водяных знаков (кроме фансабов)</li>
+                        <li>Субтитры в формате .srt или .ass</li>
+                    </ul>
+                </div>
+                <div class="rule">
+                    <h3><i class="fas fa-star"></i> Рекомендации:</h3>
+                    <ul>
+                        <li>Использовать Яндекс.Диск или Google Drive</li>
+                        <li>Указывать студию озвучки в комментариях</li>
+                        <li>Проверять синхронизацию субтитров</li>
+                        <li>Заливать несколько качеств, если возможно</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
